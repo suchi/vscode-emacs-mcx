@@ -551,13 +551,23 @@
       },
       {
         "key": "ctrl+g",
+        "command": "agentsVoice.cancelActiveRequest",
+        "when": "agentsVoiceConnected && agentsVoiceEntitled && chatIsEnabled && chatSessionHasActiveRequest && config.agents.voice.enabled && inChatInput && !editorHasMultipleSelections && !editorHasSelection && !editorHoverVisible"
+      },
+      {
+        "key": "escape escape escape",
+        "command": "agentsVoice.cancelActiveRequest",
+        "when": "agentsVoiceConnected && agentsVoiceEntitled && chatIsEnabled && chatSessionHasActiveRequest && config.agents.voice.enabled && inChatInput && !editorHasMultipleSelections && !editorHasSelection && !editorHoverVisible && config.emacs-mcx.useMetaPrefixEscape"
+      },
+      {
+        "key": "ctrl+g",
         "command": "agentsVoice.disconnect",
-        "when": "agentsVoiceConnected && config.agents.voice.enabled && inChatInput && !editorHasMultipleSelections && !editorHasSelection && !editorHoverVisible"
+        "when": "agentsVoiceConnected && agentsVoiceEntitled && agentsVoiceInitiatedHere && chatIsEnabled && config.agents.voice.enabled && inChatInput && !chatSessionHasActiveRequest && !editorHasMultipleSelections && !editorHasSelection && !editorHoverVisible || agentsVoiceConnected && agentsVoiceEntitled && chatIsEnabled && config.agents.voice.enabled && inChatInput && !chatSessionHasActiveRequest && !editorHasMultipleSelections && !editorHasSelection && !editorHoverVisible && !isSessionsWindow"
       },
       {
         "key": "escape escape escape",
         "command": "agentsVoice.disconnect",
-        "when": "agentsVoiceConnected && config.agents.voice.enabled && inChatInput && !editorHasMultipleSelections && !editorHasSelection && !editorHoverVisible && config.emacs-mcx.useMetaPrefixEscape"
+        "when": "(agentsVoiceConnected && agentsVoiceEntitled && agentsVoiceInitiatedHere && chatIsEnabled && config.agents.voice.enabled && inChatInput && !chatSessionHasActiveRequest && !editorHasMultipleSelections && !editorHasSelection && !editorHoverVisible || agentsVoiceConnected && agentsVoiceEntitled && chatIsEnabled && config.agents.voice.enabled && inChatInput && !chatSessionHasActiveRequest && !editorHasMultipleSelections && !editorHasSelection && !editorHoverVisible && !isSessionsWindow) && config.emacs-mcx.useMetaPrefixEscape"
       },
       {
         "key": "ctrl+g",
@@ -981,13 +991,23 @@
       },
       {
         "key": "ctrl+g",
-        "command": "workbench.action.browser.addElementToChat",
-        "when": "browserElementSelectionActive && browserHasUrl && chatIsEnabled && !browserHasError && activeEditor == 'workbench.editor.browser'"
+        "command": "workbench.action.browser.stopElementSelection",
+        "when": "browserElementSelectionMode && activeEditor == 'workbench.editor.browser'"
       },
       {
         "key": "escape escape escape",
-        "command": "workbench.action.browser.addElementToChat",
-        "when": "browserElementSelectionActive && browserHasUrl && chatIsEnabled && !browserHasError && activeEditor == 'workbench.editor.browser' && config.emacs-mcx.useMetaPrefixEscape"
+        "command": "workbench.action.browser.stopElementSelection",
+        "when": "browserElementSelectionMode && activeEditor == 'workbench.editor.browser' && config.emacs-mcx.useMetaPrefixEscape"
+      },
+      {
+        "key": "ctrl+g",
+        "command": "workbench.action.chat.hideFind",
+        "when": "chatFindInputFocused && chatFindWidgetVisible && inChat || chatFindWidgetFocused && chatFindWidgetVisible && inChat"
+      },
+      {
+        "key": "escape escape escape",
+        "command": "workbench.action.chat.hideFind",
+        "when": "(chatFindInputFocused && chatFindWidgetVisible && inChat || chatFindWidgetFocused && chatFindWidgetVisible && inChat) && config.emacs-mcx.useMetaPrefixEscape"
       },
       {
         "key": "ctrl+g",
@@ -1078,6 +1098,16 @@
         "key": "escape escape escape",
         "command": "inlineChat2.close",
         "when": "(chatInputHasFocus && inlineChatHasEditsAgent && inlineChatVisible || chatInputHasFocus && inlineChatHasNotebookAgent && inlineChatVisible && activeEditor == 'workbench.editor.notebook' || editorFocus && inlineChatHasEditsAgent && inlineChatVisible && !chatEdits.hasEditorModifications || editorFocus && inlineChatHasNotebookAgent && inlineChatVisible && !chatEdits.hasEditorModifications && activeEditor == 'workbench.editor.notebook') && config.emacs-mcx.useMetaPrefixEscape"
+      },
+      {
+        "key": "ctrl+g",
+        "command": "workbench.action.chat.cancelSpeechToText",
+        "when": "chatSpeechToTextRecording && inChatInput"
+      },
+      {
+        "key": "escape escape escape",
+        "command": "workbench.action.chat.cancelSpeechToText",
+        "when": "chatSpeechToTextRecording && inChatInput && config.emacs-mcx.useMetaPrefixEscape"
       },
       {
         "key": "ctrl+g",
@@ -1201,16 +1231,6 @@
       },
       {
         "key": "ctrl+g",
-        "command": "workbench.action.editorDictation.stop",
-        "when": "editorDictation.inProgress"
-      },
-      {
-        "key": "escape escape escape",
-        "command": "workbench.action.editorDictation.stop",
-        "when": "editorDictation.inProgress && config.emacs-mcx.useMetaPrefixEscape"
-      },
-      {
-        "key": "ctrl+g",
         "command": "workbench.action.speech.stopReadAloud",
         "when": "scopedChatSynthesisInProgress && textToSpeechInProgress"
       },
@@ -1218,16 +1238,6 @@
         "key": "escape escape escape",
         "command": "workbench.action.speech.stopReadAloud",
         "when": "scopedChatSynthesisInProgress && textToSpeechInProgress && config.emacs-mcx.useMetaPrefixEscape"
-      },
-      {
-        "key": "ctrl+g",
-        "command": "workbench.action.terminal.stopVoice",
-        "when": "terminalDictationInProgress"
-      },
-      {
-        "key": "escape escape escape",
-        "command": "workbench.action.terminal.stopVoice",
-        "when": "terminalDictationInProgress && config.emacs-mcx.useMetaPrefixEscape"
       },
       {
         "key": "ctrl+g",
@@ -1268,6 +1278,36 @@
         "key": "escape escape escape",
         "command": "chat.models.action.clearSearchResults",
         "when": "inModelsEditor && inModelsSearch && isLinux && config.emacs-mcx.useMetaPrefixEscape"
+      },
+      {
+        "key": "ctrl+g",
+        "command": "workbench.actions.workbench.panel.output.clearFilterText",
+        "when": "outputFilterFocus && isLinux"
+      },
+      {
+        "key": "escape escape escape",
+        "command": "workbench.actions.workbench.panel.output.clearFilterText",
+        "when": "outputFilterFocus && isLinux && config.emacs-mcx.useMetaPrefixEscape"
+      },
+      {
+        "key": "ctrl+g",
+        "command": "chat.models.action.clearSearchResults",
+        "when": "inModelsEditor && inModelsSearch && isWindows"
+      },
+      {
+        "key": "escape escape escape",
+        "command": "chat.models.action.clearSearchResults",
+        "when": "inModelsEditor && inModelsSearch && isWindows && config.emacs-mcx.useMetaPrefixEscape"
+      },
+      {
+        "key": "ctrl+g",
+        "command": "workbench.actions.workbench.panel.output.clearFilterText",
+        "when": "outputFilterFocus && isWindows"
+      },
+      {
+        "key": "escape escape escape",
+        "command": "workbench.actions.workbench.panel.output.clearFilterText",
+        "when": "outputFilterFocus && isWindows && config.emacs-mcx.useMetaPrefixEscape"
       },
       {
         "key": "ctrl+s",
@@ -1542,42 +1582,42 @@
       {
         "key": "alt+p",
         "command": "history.showPrevious",
-        "when": "historyNavigationBackwardsEnabled && historyNavigationWidgetFocus && !isComposing && !suggestWidgetVisible && config.emacs-mcx.useMetaPrefixAlt"
+        "when": "historyNavigationBackwardsEnabled && historyNavigationWidgetFocus && !suggestWidgetVisible && config.emacs-mcx.useMetaPrefixAlt"
       },
       {
         "mac": "cmd+p",
         "command": "history.showPrevious",
-        "when": "historyNavigationBackwardsEnabled && historyNavigationWidgetFocus && !isComposing && !suggestWidgetVisible && config.emacs-mcx.useMetaPrefixMacCmd"
+        "when": "historyNavigationBackwardsEnabled && historyNavigationWidgetFocus && !suggestWidgetVisible && config.emacs-mcx.useMetaPrefixMacCmd"
       },
       {
         "key": "escape p",
         "command": "history.showPrevious",
-        "when": "historyNavigationBackwardsEnabled && historyNavigationWidgetFocus && !isComposing && !suggestWidgetVisible && config.emacs-mcx.useMetaPrefixEscape"
+        "when": "historyNavigationBackwardsEnabled && historyNavigationWidgetFocus && !suggestWidgetVisible && config.emacs-mcx.useMetaPrefixEscape"
       },
       {
         "key": "ctrl+[ p",
         "command": "history.showPrevious",
-        "when": "historyNavigationBackwardsEnabled && historyNavigationWidgetFocus && !isComposing && !suggestWidgetVisible && config.emacs-mcx.useMetaPrefixCtrlLeftBracket"
+        "when": "historyNavigationBackwardsEnabled && historyNavigationWidgetFocus && !suggestWidgetVisible && config.emacs-mcx.useMetaPrefixCtrlLeftBracket"
       },
       {
         "key": "alt+n",
         "command": "history.showNext",
-        "when": "historyNavigationForwardsEnabled && historyNavigationWidgetFocus && !isComposing && !suggestWidgetVisible && config.emacs-mcx.useMetaPrefixAlt"
+        "when": "historyNavigationForwardsEnabled && historyNavigationWidgetFocus && !suggestWidgetVisible && config.emacs-mcx.useMetaPrefixAlt"
       },
       {
         "mac": "cmd+n",
         "command": "history.showNext",
-        "when": "historyNavigationForwardsEnabled && historyNavigationWidgetFocus && !isComposing && !suggestWidgetVisible && config.emacs-mcx.useMetaPrefixMacCmd"
+        "when": "historyNavigationForwardsEnabled && historyNavigationWidgetFocus && !suggestWidgetVisible && config.emacs-mcx.useMetaPrefixMacCmd"
       },
       {
         "key": "escape n",
         "command": "history.showNext",
-        "when": "historyNavigationForwardsEnabled && historyNavigationWidgetFocus && !isComposing && !suggestWidgetVisible && config.emacs-mcx.useMetaPrefixEscape"
+        "when": "historyNavigationForwardsEnabled && historyNavigationWidgetFocus && !suggestWidgetVisible && config.emacs-mcx.useMetaPrefixEscape"
       },
       {
         "key": "ctrl+[ n",
         "command": "history.showNext",
-        "when": "historyNavigationForwardsEnabled && historyNavigationWidgetFocus && !isComposing && !suggestWidgetVisible && config.emacs-mcx.useMetaPrefixCtrlLeftBracket"
+        "when": "historyNavigationForwardsEnabled && historyNavigationWidgetFocus && !suggestWidgetVisible && config.emacs-mcx.useMetaPrefixCtrlLeftBracket"
       },
       {
         "key": "ctrl+f",
